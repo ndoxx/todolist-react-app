@@ -7,7 +7,7 @@ export type TodoItem = {
 	completed: boolean
 };
 
-// checkbox's onChange callback type
+// Type of toggleTodo() called in checkbox's onChange callback
 export type ToggleTodo = (id: string) => void;
 
 // This type aggregates all the props this component is going to use
@@ -16,20 +16,16 @@ type TodoProp = {
 	toggleTodo: ToggleTodo
 };
 
+// Presentational component for a todo entry
 export class Todo extends Component<TodoProp> {
 	render(): React.ReactNode {
 		// Retrieve props by decomposing the struct
 		const { todo, toggleTodo } = this.props;
 
-		// Wrapper to be called by onChange
-		function handleTodoClick() {
-			toggleTodo(todo.id);
-		}
-
 		return (
 			<div>
 				<label>
-					<input type="checkbox" checked={todo.completed} onChange={handleTodoClick} />
+					<input type="checkbox" checked={todo.completed} onChange={() => toggleTodo(todo.id)} />
 					{todo.name}
 				</label>
 			</div>

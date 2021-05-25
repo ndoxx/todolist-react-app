@@ -6,7 +6,7 @@ type TodoListProp = {
 	toggleTodo: ToggleTodo
 };
 
-
+// Container for Todo objects
 export class TodoList extends Component<TodoListProp> {
 	render(): React.ReactNode {
 		// Retrieve props by decomposing the struct

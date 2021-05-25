@@ -46,6 +46,12 @@ function App(): JSX.Element {
 		}
 	}
 
+	function handleClearTodos() {
+		// Clear completed tasks
+		const newTodos = todos.filter(todo => !todo.completed);
+		setTodos(newTodos);
+	}
+
 	function toggleTodo(id: string) {
 		// Always copy an object, alter the copy and then set state using that copy
 		const newTodos = [...todos];
@@ -54,12 +60,6 @@ function App(): JSX.Element {
 			todo.completed = ! todo.completed;
 			setTodos(newTodos);
 		}
-	}
-
-	function handleClearTodos() {
-		// Clear completed tasks
-		const newTodos = todos.filter(todo => !todo.completed);
-		setTodos(newTodos);
 	}
 
 	return (
